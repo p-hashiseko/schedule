@@ -1,0 +1,12 @@
+[config]
+# 出力言語を日本語に指定
+model_text_language = "Japanese"
+
+[pr_description]
+# PR作成時に自動で概要を書き換えるか（trueで自動更新）
+publish_description_as_comment = false
+add_labels = true
+
+[pr_reviewer]
+# レビュー時に日本語で指示を出すための追加設定
+extra_instructions = "必ず日本語で回答してください。"
