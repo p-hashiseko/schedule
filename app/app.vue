@@ -1,30 +1,31 @@
 <script setup lang="ts">
 // レスポンスの型定義
 interface BackendResponse {
-  message: string;
+  message: string
 }
 
-const displayMessage = ref<string>('');
-const isLoading = ref(false);
-const errorLog = ref<string>('');
+const displayMessage = ref<string>('')
+const isLoading = ref(false)
+const errorLog = ref<string>('')
 
 async function connectToBackend() {
-  isLoading.value = true;
-  errorLog.value = '';
-  displayMessage.value = '';
+  isLoading.value = true
+  errorLog.value = ''
+  displayMessage.value = ''
 
   try {
     // APIを呼び出し
-    const response = await $fetch<BackendResponse>('/api/code');
-    
+    const response = await $fetch<BackendResponse>('/api/code')
+
     if (response && response.message) {
-      displayMessage.value = response.message;
+      displayMessage.value = response.message
     }
-  } catch (err: any) {
-    console.error('Fetch error:', err);
-    errorLog.value = `接続エラー: ${err.statusMessage || err.message || 'サーバーが応答していません'}`;
+  } catch (err: unknown) {
+    const error = err as { statusMessage?: string; message?: string }
+    console.error('Fetch error:', error)
+    errorLog.value = `接続エラー: ${error.statusMessage || error.message || 'サーバーが応答していません'}`
   } finally {
-    isLoading.value = false;
+    isLoading.value = false
   }
 }
 </script>
@@ -32,14 +33,10 @@ async function connectToBackend() {
 <template>
   <div class="app-container">
     <div class="card">
-      <h1>Vue + NuxtJS</h1>
-      
+      <h1>スケジュールアプリです。</h1>
+
       <div class="button-section">
-        <button 
-          @click="connectToBackend" 
-          :disabled="isLoading"
-          class="connect-button"
-        >
+        <button :disabled="isLoading" class="connect-button" @click="connectToBackend">
           {{ isLoading ? '接続中...' : 'コードを表示する' }}
         </button>
       </div>
@@ -74,7 +71,7 @@ async function connectToBackend() {
   background: white;
   padding: 3rem;
   border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   text-align: center;
   width: 100%;
   max-width: 500px;
@@ -152,10 +149,12 @@ h1 {
 }
 
 /* アニメーション */
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter-from, .fade-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
 }
 </style>
