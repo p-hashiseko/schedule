@@ -1,0 +1,41 @@
+[config]
+# 出力言語を日本語に指定
+model_text_language = "ja"
+language = "ja"
+
+[pr_description]
+# PR作成時に自動で概要を書き換えるか（trueで自動更新）
+publish_description_as_comment = false
+add_labels = true
+# 日本語で説明を生成
+extra_instructions = """
+必ず日本語で回答してください。
+すべての出力は日本語で行ってください。
+"""
+
+[pr_reviewer]
+# レビュー時に日本語で指示を出すための追加設定
+extra_instructions = """
+必ず日本語で回答してください。
+レビューコメント、提案、フィードバックはすべて日本語で記載してください。
+コードの問題点や改善提案も日本語で説明してください。
+"""
+
+[pr_code_suggestions]
+# コード提案も日本語で
+extra_instructions = """
+必ず日本語でコメントと提案を記載してください。
+コードの改善案や説明はすべて日本語で行ってください。
+"""
+
+[pr_questions]
+# PR質問も日本語で
+extra_instructions = """
+質問とその回答はすべて日本語で記載してください。
+"""
+
+[pr_update_changelog]
+# チェンジログも日本語で
+extra_instructions = """
+チェンジログの内容は日本語で記載してください。
+"""
