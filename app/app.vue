@@ -34,6 +34,7 @@ async function connectToBackend() {
   <div class="app-container">
     <div class="card">
       <h1>スケジュールアプリです。</h1>
+      <h1>テストコードを表示します。</h1>
 
       <div class="button-section">
         <button :disabled="isLoading" class="connect-button" @click="connectToBackend">
