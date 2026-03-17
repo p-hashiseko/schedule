@@ -18,6 +18,12 @@
 const a = 91;
 const b = 72;
 
+const multiply = (a: number, b: number) => {
+    return a * b;
+}
+
+const result = multiply(a, b);
+console.log(result);
 
 
 /**
@@ -40,6 +46,15 @@ const b = 72;
  */
 const names = ["Alice", "Bob", "Charlie"];
 
+const printNames = (names: string[]) => {
+    for (const name of names) {
+        console.log(name);
+    }
+};
+
+printNames(names);
+
+
 /**
  * Q3.　以下の関数を参考にして、number と boolean を引数に受け取って true なら2倍した値。 false なら 0 を返す関数を作ってください。
  * ヒント：条件分岐を使用してみましょう。
@@ -60,5 +75,15 @@ const names = ["Alice", "Bob", "Charlie"];
  * 
  */
 const number = 5;
-const isDouble = true;
+const isDouble = false;
     
+const doubleOrZero = (number: number, isDouble: boolean) => {
+    if (isDouble) {
+        return number * 2;
+    } else {
+        return 0;
+    }
+};
+
+const result3 = doubleOrZero(number, isDouble);
+console.log(result3);    
