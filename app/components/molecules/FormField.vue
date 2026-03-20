@@ -21,15 +21,41 @@
 <script setup lang="ts">
 import Input from '../atoms/Input.vue'
 
+/**
+ * フォームフィールドコンポーネント
+ *
+ * ラベル・入力欄・エラーメッセージ・補足テキストをまとめた汎用フォームフィールド。
+ *
+ * @example
+ * <FormField
+ *   id="email"
+ *   v-model="email"
+ *   label="メールアドレス"
+ *   type="email"
+ *   placeholder="example@example.com"
+ *   :required="true"
+ *   :error-message="errors.email"
+ *   helper-text="登録済みのメールアドレスを入力してください"
+ * />
+ */
 interface Props {
+  /** input 要素の id（label の for 属性にも使用） */
   id?: string
+  /** フィールドのラベルテキスト */
   label?: string
+  /** v-model バインディング値 */
   modelValue?: string | number
+  /** input の type 属性（text / password / email など） */
   type?: string
+  /** input のプレースホルダー */
   placeholder?: string
+  /** 入力を無効化するか */
   disabled?: boolean
+  /** 必須フィールドかどうか（true の場合ラベルに * を表示） */
   required?: boolean
+  /** バリデーションエラーメッセージ（空文字の場合は非表示） */
   errorMessage?: string
+  /** 補足テキスト（errorMessage が空の場合のみ表示） */
   helperText?: string
 }
 

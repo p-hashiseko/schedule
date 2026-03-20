@@ -8,24 +8,21 @@ export const useAuth = () => {
   const loading = ref(false)
   const error = ref<string | null>(null)
 
-  // ログイン（モック実装：username="username", password="password"でログイン可）
+  // ログイン（APIコール）
   const login = async (username: string, password: string) => {
     loading.value = true
     error.value = null
     try {
-      await new Promise((resolve) => setTimeout(resolve, 500)) // モック遅延
-
-      // 簡易認証チェック
-      if (username === 'username' && password === 'password') {
-        user.value = {
-          id: '1',
-          email: 'user@example.com',
-          name: 'テストユーザー'
+      const response = await $fetch<{ success: boolean; data: { user: User; token: string } }>(
+        '/api/auth/login',
+        {
+          method: 'POST',
+          body: { username, password }
         }
-        isAuthenticated.value = true
-      } else {
-        throw new Error('ユーザー名またはパスワードが正しくありません')
-      }
+      )
+
+      user.value = response.data.user
+      isAuthenticated.value = true
     } catch (e) {
       error.value = e instanceof Error ? e.message : 'ログインに失敗しました'
       console.error(e)

@@ -45,6 +45,8 @@ import FormField from '../components/molecules/FormField.vue'
 import Button from '../components/atoms/Button.vue'
 import { useAuth } from '../composables/useAuth'
 
+definePageMeta({ layout: false })
+
 const router = useRouter()
 const { login, loading, error } = useAuth()
 
@@ -92,7 +94,7 @@ const handleLogin = async () => {
 .login-title {
   font-size: 1.875rem;
   font-weight: bold;
-  text-align: center;
+  text-align: COLOR;
   margin-bottom: 2rem;
   color: #111827;
 }
