@@ -38,6 +38,7 @@ const handleInput = (event: Event) => {
 
 <style scoped>
 .input {
+  box-sizing: border-box;
   padding: 0.5rem;
   border: 1px solid #d1d5db;
   border-radius: 0.25rem;

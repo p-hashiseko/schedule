@@ -44,6 +44,7 @@ import { useRouter } from 'vue-router'
 import FormField from '../components/molecules/FormField.vue'
 import Button from '../components/atoms/Button.vue'
 import { useAuth } from '../composables/useAuth'
+import { ColorPalettes } from '../color-palettes'
 
 definePageMeta({ layout: false })
 
@@ -79,14 +80,14 @@ const handleLogin = async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f3f4f6;
+  background-color: v-bind('ColorPalettes.background');
 }
 
 .login-container {
   width: 100%;
   max-width: 400px;
   padding: 2rem;
-  background-color: white;
+  background-color: v-bind('ColorPalettes.surface');
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -94,16 +95,16 @@ const handleLogin = async () => {
 .login-title {
   font-size: 1.875rem;
   font-weight: bold;
-  text-align: COLOR;
+  text-align: center;
   margin-bottom: 2rem;
-  color: #111827;
+  color: v-bind('ColorPalettes.textPrimary');
 }
 
 .error-message {
   padding: 0.75rem;
   margin-bottom: 1rem;
-  background-color: #fee2e2;
-  color: #991b1b;
+  background-color: v-bind('ColorPalettes.errorBg');
+  color: v-bind('ColorPalettes.errorText');
   border-radius: 0.25rem;
   font-size: 0.875rem;
 }

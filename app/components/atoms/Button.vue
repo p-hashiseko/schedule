@@ -36,6 +36,7 @@ const handleClick = (event: MouseEvent) => {
 
 <style scoped>
 .btn {
+  box-sizing: border-box;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
